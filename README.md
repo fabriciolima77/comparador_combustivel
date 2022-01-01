@@ -1,16 +1,28 @@
-# comparador_combustivel
+# Comparador de combustível
 
-Um comparador de combustivel
+Um simples aplicativo feito em flutter para comparar qual combustível é mais viável
+de acordo com o rendimento do veículo do usuário.
 
-## Getting Started
+## 🖼️ Imagens
 
-This project is a starting point for a Flutter application.
+ <div>
+    <img alt="print1" title="#Print 1" src="./images/print1.png" />
+    <img alt="print2" title="#Print 2" src="./images/print2.png" />
+    <img alt="print3" title="#Print 3" src="./images/print3.png" />
+ </div>
 
-A few resources to get you started if this is your first Flutter project:
+### Features
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- [x] Calculo de rendimento do veículo
+- [x] Comparação de qual combustível é mais vantajoso entre gasolina e etanol
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 🗂 Pacotes
+- [Amazon Appstore](em breve...)
+
+### 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- [Dart](https://dart.dev/)
+- [Flutter](https://flutter.dev/)
+- [mask_text_input_formatter: ^2.0.0](https://pub.dev/packages/mask_text_input_formatter)
