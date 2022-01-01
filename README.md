@@ -18,9 +18,9 @@ de acordo com o rendimento do veículo do usuário.
 
 ### 🗂 Pacotes
 - [Amazon Appstore](em breve...)
-- [arm64_v8a](.build\app\outputs\flutter-apk\comparador_combustivel-arm64-v8a-release.apk)
-- [armeabi_v7a](.build\app\outputs\flutter-apk\comparador_combustivel-armeabi-v7a-release.apk)
-- [x86_64](.build\app\outputs\flutter-apk\comparador_combustivel-x86_64-release.apk)
+- [arm64_v8a](https://github.com/fabriciolima77/comparador_combustivel/blob/master/build/app/outputs/flutter-apk/comparador_combustivel-arm64-v8a-release.apk)
+- [armeabi_v7a](https://github.com/fabriciolima77/comparador_combustivel/blob/master/build/app/outputs/flutter-apk/comparador_combustivel-armeabi-v7a-release.apk)
+- [x86_64](https://github.com/fabriciolima77/comparador_combustivel/blob/master/build/app/outputs/flutter-apk/comparador_combustivel-x86_64-release.apk)
 
 ### 🛠 Tecnologias
 
