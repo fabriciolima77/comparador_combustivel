@@ -1,0 +1,74 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.fabriciolima77.compare.comparador_combustivel"
+4    android:versionCode="4001"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="16"
+8-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="31" />
+9-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml
+10
+11    <application
+11-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:3:4-32:19
+12        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+12-->[androidx.core:core:1.6.0] C:\Users\fabri\.gradle\caches\transforms-3\59d07b9236492ac1f3d5c858b903ce80\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+13        android:icon="@mipmap/ic_launcher"
+13-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:4:8-42
+14        android:label="Comparador de combustível" >
+14-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:5:8-49
+15        <activity
+15-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:6:9-26:20
+16            android:name="com.fabriciolima77.compare.comparador_combustivel.MainActivity"
+16-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:7:13-41
+17            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+17-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:11:13-163
+18            android:exported="true"
+18-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:8:13-36
+19            android:hardwareAccelerated="true"
+19-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:12:13-47
+20            android:launchMode="singleTop"
+20-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:9:13-43
+21            android:theme="@style/LaunchTheme"
+21-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:10:13-47
+22            android:windowSoftInputMode="adjustResize" >
+22-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:13:13-55
+23
+24            <!--
+25                 Specifies an Android theme to apply to this Activity as soon as
+26                 the Android process has started. This theme is visible to the user
+27                 while the Flutter UI initializes. After that, this theme continues
+28                 to determine the Window background behind the Flutter UI.
+29            -->
+30            <meta-data
+30-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:18:13-21:17
+31                android:name="io.flutter.embedding.android.NormalTheme"
+31-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:19:15-70
+32                android:resource="@style/NormalTheme" />
+32-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:20:15-52
+33
+34            <intent-filter>
+34-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:22:13-25:29
+35                <action android:name="android.intent.action.MAIN" />
+35-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:23:17-68
+35-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:23:25-66
+36
+37                <category android:name="android.intent.category.LAUNCHER" />
+37-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:24:17-76
+37-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:24:27-74
+38            </intent-filter>
+39        </activity>
+40        <!--
+41             Don't delete the meta-data below.
+42             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+43        -->
+44        <meta-data
+44-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:29:9-31:33
+45            android:name="flutterEmbedding"
+45-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:30:13-44
+46            android:value="2" />
+46-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:31:13-30
+47    </application>
+48
+49</manifest>

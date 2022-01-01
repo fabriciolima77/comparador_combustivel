@@ -1,0 +1,4 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/fabriciolima77/compare/comparador_combustivel/BuildConfig.java
+ com.fabriciolima77.compare.comparador_combustivel.BuildConfig
