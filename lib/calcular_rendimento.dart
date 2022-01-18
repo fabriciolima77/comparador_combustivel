@@ -1,12 +1,5 @@
-import 'package:comparador_combustivel/main.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-
-void main(){
-  runApp(MaterialApp(
-    home: Home(),
-  ));
-}
 
 // ignore: use_key_in_widget_constructors
 class CalcularRendimento extends StatefulWidget {
@@ -37,7 +30,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
   void calculaMedia(){
     var hodometroInicial = double.parse(kmInicial.text);
     var hodometroFinal = double.parse(kmFinal.text);
-    var qtdLitros = double.parse(litros.text);
+    var qtdLitros = double.parse(litros.text.replaceAll(",", "."));
     final kmRodado = hodometroFinal - hodometroInicial;
     final mediaComb = kmRodado / qtdLitros;
 
@@ -105,7 +98,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                         '######',
                         "(Km)",
                         kmInicial,
-                        TextInputType.text,
+                        TextInputType.number,
                         Colors.blueAccent[100]),
                   ),
                   const Padding(
@@ -123,7 +116,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                         '######',
                         "(Km)",
                         kmFinal,
-                        TextInputType.text,
+                        TextInputType.number,
                         Colors.blueAccent[100]),
                   ),
                   const Padding(
@@ -141,7 +134,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                         '',
                         "Litros",
                         litros,
-                        TextInputType.text,
+                        TextInputType.number,
                         Colors.blueAccent[100]),
                   ),
                 ],),

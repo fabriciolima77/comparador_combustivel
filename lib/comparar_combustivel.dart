@@ -1,13 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-
-void main(){
-  runApp(MaterialApp(
-    home: Home(),
-    title: "Comparador de Combustível",
-  ));
-}
 
 class CompararCombustivel extends StatefulWidget {
   const CompararCombustivel({Key? key}) : super(key: key);
@@ -40,8 +32,8 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
   }
 
   void _calculaRendimento(){
-    var rendEtanol = double.parse(rendimentoEtanol.text);
-    var rendGasolina = double.parse(rendimentoGasolina.text);
+    var rendEtanol = double.parse(rendimentoEtanol.text.replaceAll(",", "."));
+    var rendGasolina = double.parse(rendimentoGasolina.text.replaceAll(",", "."));
     var valorEtanol = double.parse(precoEtanol.text.replaceAll(",", "."));
     var valorGasolina = double.parse(precoGasolina.text.replaceAll(",", "."));
     final rendimento = (rendEtanol / rendGasolina) * 100;
@@ -75,9 +67,8 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
 
     return Scaffold(
       appBar: AppBar(
-        // ignore: prefer_const_constructors
-        title: Text("Comparar combustível",
-            style: const TextStyle(
+        title: const Text("Comparar combustível",
+            style: TextStyle(
                 color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18)
         ),
         backgroundColor: Colors.transparent,
@@ -126,7 +117,7 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
                         '',
                         "(Km/L)",
                         rendimentoEtanol,
-                        TextInputType.text,
+                        TextInputType.number,
                         Colors.blueAccent[100]),
                   ),
                   const Padding(
@@ -144,7 +135,7 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
                         '',
                         "(Km/L)",
                         rendimentoGasolina,
-                        TextInputType.text,
+                        TextInputType.number,
                         Colors.blueAccent[100]),
                   ),
                 ],),
