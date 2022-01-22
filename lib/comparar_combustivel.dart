@@ -1,41 +1,31 @@
+import 'package:comparador_combustivel/stores/comparar_store.dart';
+import 'package:comparador_combustivel/widgets/criabotao.dart';
+import 'package:comparador_combustivel/widgets/criacampotexto.dart';
+import 'package:comparador_combustivel/widgets/criacampotextovalidate.dart';
 import 'package:flutter/material.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class CompararCombustivel extends StatefulWidget {
   const CompararCombustivel({Key? key}) : super(key: key);
+
 
   @override
   _CompararCombustivelState createState() => _CompararCombustivelState();
 }
 
 class _CompararCombustivelState extends State<CompararCombustivel> {
-  TextEditingController rendimentoEtanol = TextEditingController();
-  TextEditingController rendimentoGasolina = TextEditingController();
-  TextEditingController precoEtanol = TextEditingController();
-  TextEditingController precoGasolina = TextEditingController();
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  CompararStore compararStore = CompararStore();
 
   var texto = "";
   bool _isVisible = false;
   var corResultado = Colors.white;
 
-  void _resetField(){
-    rendimentoEtanol.text = "";
-    rendimentoGasolina.text ="";
-    precoEtanol.text = "";
-    precoGasolina.text = "";
-    texto = "";
-    _isVisible = false;
-    setState(() {
-      _formKey = GlobalKey<FormState>();
-    });
-  }
-
   void _calculaRendimento(){
-    var rendEtanol = double.parse(rendimentoEtanol.text.replaceAll(",", "."));
-    var rendGasolina = double.parse(rendimentoGasolina.text.replaceAll(",", "."));
-    var valorEtanol = double.parse(precoEtanol.text.replaceAll(",", "."));
-    var valorGasolina = double.parse(precoGasolina.text.replaceAll(",", "."));
+    var rendEtanol = double.parse(compararStore.rendEtanol.replaceAll(",", "."));
+    var rendGasolina = double.parse(compararStore.rendGasolina.replaceAll(",", "."));
+    var valorEtanol = double.parse(compararStore.precoEtanol.replaceAll(",", "."));
+    var valorGasolina = double.parse(compararStore.precoGasolina.replaceAll(",", "."));
     final rendimento = (rendEtanol / rendGasolina) * 100;
     final percentEtanol = (valorEtanol / valorGasolina) * 100;
 
@@ -60,6 +50,29 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
     });
   }
 
+  void _calculaSemRendimento() {
+    var valorEtanol = double.parse(compararStore.precoEtanol.replaceAll(",", "."));
+    var valorGasolina = double.parse(compararStore.precoGasolina.replaceAll(",", "."));
+    final percentEtanol = (valorEtanol / valorGasolina) * 100;
+
+    setState(() {
+      if (percentEtanol < 70) {
+        texto = "Etanol é mais vantajoso!\n"
+            "rendimento sobre o preço: "
+            "(${percentEtanol.toStringAsPrecision(3)})%"
+            "Utilize o rendimento do veículo para melhores resultados.";
+        _isVisible = true;
+        corResultado = Colors.greenAccent;
+      } else
+      if (percentEtanol >= 70) {
+        texto = "Gasolina é mais vantajosa!\n"
+            "Utilize o rendimento do veículo para melhores resultados.";
+        _isVisible = true;
+        corResultado = Colors.redAccent;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double alturaTela = MediaQuery.of(context).size.height;
@@ -73,15 +86,8 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        actions: <Widget>[
-          IconButton(
-              onPressed: _resetField,
-              icon: const Icon(Icons.refresh, color: Colors.black,))
-        ],
       ),
       body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -113,12 +119,12 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                    child: buildCampoText(
-                        '',
-                        "(Km/L)",
-                        rendimentoEtanol,
-                        TextInputType.number,
-                        Colors.blueAccent[100]),
+                    child: Observer(builder: (_){
+                      return CampoTexto(
+                          onChanged: compararStore.setRendEtanol,
+                          hintText: "(Km/L)",
+                      );
+                    })
                   ),
                   const Padding(
                     padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
@@ -131,12 +137,12 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                    child: buildCampoText(
-                        '',
-                        "(Km/L)",
-                        rendimentoGasolina,
-                        TextInputType.number,
-                        Colors.blueAccent[100]),
+                    child: Observer(builder: (_){
+                      return CampoTexto(
+                          onChanged: compararStore.setRendGasolina,
+                          hintText: "(Km/L)",
+                      );
+                    })
                   ),
                 ],),
               ),
@@ -150,7 +156,7 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
                 ),
               ),
               Container(
-                height: alturaTela < 600 ? alturaTela * 0.45: alturaTela * 0.3,
+                height: alturaTela < 600 ? alturaTela * 0.5: alturaTela * 0.4,
                 width: larguraTela * 0.9,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18),
@@ -168,12 +174,13 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                    child: buildCampoText(
-                        '#,##',
-                        "R\$",
-                        precoEtanol,
-                        TextInputType.number,
-                        Colors.blueAccent[100]),
+                    child: Observer(builder: (_){
+                      return CampoTextoValidate(
+                          onChanged: compararStore.setPrecoEtanol,
+                          hintText: "R\$",
+                          errorText: compararStore.validateEtanol
+                      );
+                    })
                   ),
                    const Padding(
                     padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
@@ -186,12 +193,12 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                    child: buildCampoText(
-                        '#,##',
-                        "R\$",
-                        precoGasolina,
-                        TextInputType.number,
-                        Colors.blueAccent[100]),
+                    child: Observer(builder: (_){
+                      return CampoTextoValidate(
+                          onChanged: compararStore.setPrecoGasolina,
+                          hintText: "R\$",
+                          errorText: compararStore.validateGasolina);
+                    }),
                   ),
                 ],),
               ),
@@ -226,59 +233,19 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
               Padding(padding: EdgeInsets.all(alturaTela * 0.0136)),
               Container(
                 alignment: Alignment.center,
-                child: buildBotao("CALCULAR",
-                    _calculaRendimento,
-                    16, 8, 16, 8
-                ),
+                child: Observer(builder: (_){
+                  return CriaBotao(
+                      hintText: "CALCULAR",
+                      onPressed: compararStore.isValid ?
+                      compararStore.rendGasolina.isEmpty && compararStore.rendEtanol.isEmpty
+                          ? _calculaSemRendimento : _calculaRendimento : null,
+                      left: 32.0, top: 16.0, right: 32.0, bottom: 16.0);
+                })
               ),
               Padding(padding: EdgeInsets.all(alturaTela * 0.0136)),
             ],
           ),
         ),
-      ),
-    );
+     );
   }
-}
-
-Widget buildCampoText(formato ,String text, TextEditingController c, keyboard, corBorda, ){
-  var maskFormatter = MaskTextInputFormatter(mask: formato, filter: { "#": RegExp(r'[0-9]') });
-  return TextField(
-    keyboardType: keyboard,
-    maxLines: 1,
-    inputFormatters: [
-      maskFormatter
-    ],
-    decoration: InputDecoration(
-      hintText: text,
-      contentPadding: const EdgeInsets.all(10.0),
-      hintStyle: TextStyle(color: Colors.grey[600]),
-      filled: true,
-      fillColor: Colors.white,
-      enabledBorder: OutlineInputBorder(
-        borderSide: const BorderSide(color: Colors.white),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: corBorda),
-        borderRadius: BorderRadius.circular(8),
-      ),
-    ),
-    style: const TextStyle(color: Colors.black),
-    controller: c,
-  );
-}
-
-Widget buildBotao(String text, function, double left, double top, double right, double bottom){
-  return ElevatedButton(
-    child: Text(text, style: const TextStyle(fontSize: 20, color: Colors.white),),
-    onPressed: function,
-    style: ElevatedButton.styleFrom(
-      primary: Colors.blueAccent[400],
-      padding: EdgeInsets.fromLTRB(left, top, right, bottom),
-      textStyle: const TextStyle(fontWeight: FontWeight.bold),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
-      ),
-    ),
-  );
 }

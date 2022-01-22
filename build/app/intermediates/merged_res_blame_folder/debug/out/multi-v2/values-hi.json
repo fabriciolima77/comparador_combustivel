@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\fabri\\StudioProjects\\comparador_combustivel\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hi\\values-hi.xml",
+            "outputFile": "/Users/fabriciocavalcante/Desktop/comparador_combustivel/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-hi/values-hi.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\fabri\\.gradle\\caches\\transforms-3\\59d07b9236492ac1f3d5c858b903ce80\\transformed\\core-1.6.0\\res\\values-hi\\values-hi.xml",
+                    "source": "/Users/fabriciocavalcante/.gradle/caches/transforms-3/59d07b9236492ac1f3d5c858b903ce80/transformed/core-1.6.0/res/values-hi/values-hi.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

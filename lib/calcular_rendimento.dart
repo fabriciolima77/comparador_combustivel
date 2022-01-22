@@ -1,5 +1,8 @@
+import 'package:comparador_combustivel/stores/calcular_store.dart';
+import 'package:comparador_combustivel/widgets/criabotao.dart';
+import 'package:comparador_combustivel/widgets/criacampotextovalidate.dart';
 import 'package:flutter/material.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 // ignore: use_key_in_widget_constructors
 class CalcularRendimento extends StatefulWidget {
@@ -8,37 +11,24 @@ class CalcularRendimento extends StatefulWidget {
 }
 
 class _CalcularRendimentoState extends State<CalcularRendimento> {
-  TextEditingController kmInicial = TextEditingController();
-  TextEditingController kmFinal = TextEditingController();
-  TextEditingController litros = TextEditingController();
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  CalcularStore calcularStore = CalcularStore();
 
   var resultado ="";
   bool _isVisible = false;
 
-  void _resetField(){
-    kmInicial.text = "";
-    kmFinal.text ="";
-    litros.text = "";
-    resultado = "";
-    _isVisible = false;
-    setState(() {
-      _formKey = GlobalKey<FormState>();
-    });
-  }
-
   void calculaMedia(){
-    var hodometroInicial = double.parse(kmInicial.text);
-    var hodometroFinal = double.parse(kmFinal.text);
-    var qtdLitros = double.parse(litros.text.replaceAll(",", "."));
+    var hodometroInicial = double.parse(calcularStore.kmInicial);
+    var hodometroFinal = double.parse(calcularStore.kmFinal);
+    var qtdLitros = double.parse(calcularStore.litros.replaceAll(",", "."));
     final kmRodado = hodometroFinal - hodometroInicial;
     final mediaComb = kmRodado / qtdLitros;
 
-    setState(() {
-      resultado = "A média de consumo do seu veículo é: "
-          "${mediaComb.toStringAsPrecision(3)} Km/L";
-      _isVisible = true;
-    });
+      setState(() {
+        resultado = "A média de consumo do seu veículo é: "
+            "${mediaComb.toStringAsPrecision(3)} Km/L";
+        _isVisible = true;
+      });
   }
 
   @override
@@ -54,15 +44,8 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        actions: <Widget>[
-          IconButton(
-              onPressed: _resetField,
-              icon: const Icon(Icons.refresh, color: Colors.black,))
-        ],
       ),
       body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -76,7 +59,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                 ),
               ),
               Container(
-                height: alturaTela < 600 ? alturaTela * 0.55: alturaTela * 0.4,
+                height: alturaTela < 600 ? alturaTela * 0.55: alturaTela * 0.5,
                 width: larguraTela * 0.9,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18),
@@ -94,12 +77,13 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
-                    child: buildCampoText(
-                        '######',
-                        "(Km)",
-                        kmInicial,
-                        TextInputType.number,
-                        Colors.blueAccent[100]),
+                    child: Observer(builder: (_) {
+                      return CampoTextoValidate(
+                          /*controller: kmInicialControl,*/
+                          onChanged: calcularStore.setKmInicial,
+                          hintText: "(Km)",
+                          errorText: calcularStore.validateKmInicial);
+                    },),
                   ),
                   const Padding(
                     padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
@@ -112,12 +96,13 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
-                    child: buildCampoText(
-                        '######',
-                        "(Km)",
-                        kmFinal,
-                        TextInputType.number,
-                        Colors.blueAccent[100]),
+                    child: Observer(builder: (_){
+                      return CampoTextoValidate(
+                          onChanged: calcularStore.setKmFinal,
+                          /*controller: kmFinalControl,*/
+                          hintText: "(Km)",
+                          errorText: calcularStore.validateKmFinal);
+                    })
                   ),
                   const Padding(
                     padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
@@ -130,12 +115,13 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
-                    child: buildCampoText(
-                        '',
-                        "Litros",
-                        litros,
-                        TextInputType.number,
-                        Colors.blueAccent[100]),
+                    child: Observer(builder: (_){
+                      return CampoTextoValidate(
+                          onChanged: calcularStore.setLitros,
+                          /*controller: litrosControl,*/
+                          hintText: "Litros",
+                          errorText: calcularStore.validateLitros);
+                    })
                   ),
                 ],),
               ),
@@ -170,62 +156,22 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                   ),
                 ),
               ),
-              Padding(padding: EdgeInsets.all(alturaTela * 0.0136)),
+              const SizedBox(height: 10.0),
               Container(
                 alignment: Alignment.center,
-                child: buildBotao("CALCULAR",
-                   calculaMedia,
-                    16, 8, 16, 8
-                ),
+                child: Observer(builder: (_){
+                  return CriaBotao(
+                      hintText: "CALCULAR",
+                      onPressed: calcularStore.isFormValid ? calculaMedia : null,
+                      left: 32, top: 16, right: 32, bottom: 16);
+                }),
               ),
-              Padding(padding: EdgeInsets.all(alturaTela * 0.0136)),
+              const SizedBox(
+                height: 10.0,
+              ),
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-Widget buildCampoText(formato ,String text, TextEditingController c, keyboard, corBorda, ){
-  var maskFormatter = MaskTextInputFormatter(mask: formato, filter: { "#": RegExp(r'[0-9]') });
-  return TextField(
-    keyboardType: keyboard,
-    maxLines: 1,
-    inputFormatters: [
-      maskFormatter
-    ],
-    decoration: InputDecoration(
-      hintText: text,
-      contentPadding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-      hintStyle: TextStyle(color: Colors.grey[600]),
-      filled: true,
-      fillColor: Colors.white,
-      enabledBorder: OutlineInputBorder(
-        borderSide: const BorderSide(color: Colors.white),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: corBorda),
-        borderRadius: BorderRadius.circular(8),
-      ),
-    ),
-    style: const TextStyle(color: Colors.black),
-    controller: c,
-  );
-}
-
-Widget buildBotao(String text, function, double left, double top, double right, double bottom, ){
-  return ElevatedButton(
-    child: Text(text, style: const TextStyle(fontSize: 20, color: Colors.white),),
-    onPressed: function,
-    style: ElevatedButton.styleFrom(
-      primary: Colors.blueAccent[400],
-      padding: EdgeInsets.fromLTRB(left, top, right, bottom),
-      textStyle: const TextStyle(fontWeight: FontWeight.bold),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
-      ),
-    ),
-  );
+      );
+    }
 }

@@ -1,4 +1,4 @@
-#Fri Dec 31 11:13:17 BRT 2021
-base.0=C\:\\Users\\fabri\\StudioProjects\\comparador_combustivel\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Sat Jan 22 12:15:08 BRT 2022
+base.0=/Users/fabriciocavalcante/Desktop/comparador_combustivel/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

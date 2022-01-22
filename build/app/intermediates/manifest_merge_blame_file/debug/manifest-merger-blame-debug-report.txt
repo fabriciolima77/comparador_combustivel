@@ -12,34 +12,34 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\debug\AndroidManifest.xml:6:5-66
-14-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\debug\AndroidManifest.xml:6:22-64
+14-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/debug/AndroidManifest.xml:6:5-66
+14-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/debug/AndroidManifest.xml:6:22-64
 15
 16    <application
-16-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:3:4-32:19
+16-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:3:4-32:19
 17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-17-->[androidx.core:core:1.6.0] C:\Users\fabri\.gradle\caches\transforms-3\59d07b9236492ac1f3d5c858b903ce80\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+17-->[androidx.core:core:1.6.0] /Users/fabriciocavalcante/.gradle/caches/transforms-3/59d07b9236492ac1f3d5c858b903ce80/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
 18        android:debuggable="true"
 19        android:icon="@mipmap/ic_launcher"
-19-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:4:8-42
+19-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:4:8-42
 20        android:label="Comparador de combustível" >
-20-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:5:8-49
+20-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:5:8-49
 21        <activity
-21-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:6:9-26:20
+21-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:6:9-26:20
 22            android:name="com.fabriciolima77.compare.comparador_combustivel.MainActivity"
-22-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:7:13-41
+22-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:7:13-41
 23            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-23-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:11:13-163
+23-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:11:13-163
 24            android:exported="true"
-24-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:8:13-36
+24-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:8:13-36
 25            android:hardwareAccelerated="true"
-25-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:12:13-47
+25-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:12:13-47
 26            android:launchMode="singleTop"
-26-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:9:13-43
+26-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:9:13-43
 27            android:theme="@style/LaunchTheme"
-27-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:10:13-47
+27-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:10:13-47
 28            android:windowSoftInputMode="adjustResize" >
-28-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:13:13-55
+28-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:13:13-55
 29
 30            <!--
 31                 Specifies an Android theme to apply to this Activity as soon as
@@ -48,21 +48,21 @@
 34                 to determine the Window background behind the Flutter UI.
 35            -->
 36            <meta-data
-36-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:18:13-21:17
+36-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:18:13-21:17
 37                android:name="io.flutter.embedding.android.NormalTheme"
-37-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:19:15-70
+37-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:19:15-70
 38                android:resource="@style/NormalTheme" />
-38-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:20:15-52
+38-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:20:15-52
 39
 40            <intent-filter>
-40-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:22:13-25:29
+40-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:22:13-25:29
 41                <action android:name="android.intent.action.MAIN" />
-41-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:23:17-68
-41-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:23:25-66
+41-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:23:17-68
+41-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:23:25-66
 42
 43                <category android:name="android.intent.category.LAUNCHER" />
-43-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:24:17-76
-43-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:24:27-74
+43-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:24:17-76
+43-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:24:27-74
 44            </intent-filter>
 45        </activity>
 46        <!--
@@ -70,11 +70,11 @@
 48             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
 49        -->
 50        <meta-data
-50-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:29:9-31:33
+50-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:29:9-31:33
 51            android:name="flutterEmbedding"
-51-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:30:13-44
+51-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:30:13-44
 52            android:value="2" />
-52-->C:\Users\fabri\StudioProjects\comparador_combustivel\android\app\src\main\AndroidManifest.xml:31:13-30
+52-->/Users/fabriciocavalcante/Desktop/comparador_combustivel/android/app/src/main/AndroidManifest.xml:31:13-30
 53    </application>
 54
 55</manifest>
