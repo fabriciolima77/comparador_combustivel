@@ -7,32 +7,32 @@ class CalcularStore = _CalcularStore with _$CalcularStore;
 abstract class _CalcularStore with Store {
 
   @observable
-  String kmInicial = "";
+  late String kmInicial = "";
 
   @action
   void setKmInicial(String value) => kmInicial = value;
 
   @observable
-  String kmFinal = "";
+  late String kmFinal = "";
 
   @action
   void setKmFinal(String value) => kmFinal = value;
 
   @observable
-  String litros = "";
+  late String litros = "";
 
   @action
   void setLitros(String value) => litros = value;
 
   @action
-  validateKmInicial(){
+   validateKmInicial(){
     if(kmInicial.isEmpty){
       return "Campo obrigatório!";
     } return null;
   }
 
   @action
-   validateKmFinal(){
+    validateKmFinal(){
     if(kmFinal.isEmpty){
       return "Campo obrigatório!";
     }
@@ -42,7 +42,7 @@ abstract class _CalcularStore with Store {
   }
 
   @action
-  validateLitros(){
+   validateLitros(){
     if(litros.isEmpty){
       return "Campo obrigatório!";
     } return null;

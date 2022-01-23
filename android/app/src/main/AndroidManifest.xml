@@ -2,7 +2,7 @@
     package="com.fabriciolima77.compare.comparador_combustivel">
    <application
        android:icon="@mipmap/ic_launcher"
-       android:label="Comparador de combustível">
+       android:label="Melhor Combustível">
         <activity
             android:name=".MainActivity"
             android:exported="true"

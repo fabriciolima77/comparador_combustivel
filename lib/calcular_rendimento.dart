@@ -59,7 +59,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                 ),
               ),
               Container(
-                height: alturaTela < 600 ? alturaTela * 0.55: alturaTela * 0.5,
+                height: alturaTela < 600 ? alturaTela * 0.55: alturaTela * 0.6,
                 width: larguraTela * 0.9,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18),
@@ -67,7 +67,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                 ),
                 child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
                   const Padding(
-                    padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
+                    padding: EdgeInsets.all(10),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text("Hodômetro inicial: ",
@@ -76,7 +76,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
+                    padding: const EdgeInsets.all(10),
                     child: Observer(builder: (_) {
                       return CampoTextoValidate(
                           /*controller: kmInicialControl,*/
@@ -86,7 +86,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                     },),
                   ),
                   const Padding(
-                    padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
+                    padding: EdgeInsets.all(10),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text("Hodômetro final: ",
@@ -95,7 +95,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
+                    padding: const EdgeInsets.all(10),
                     child: Observer(builder: (_){
                       return CampoTextoValidate(
                           onChanged: calcularStore.setKmFinal,
@@ -105,7 +105,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                     })
                   ),
                   const Padding(
-                    padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
+                    padding: EdgeInsets.all(10),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text("Quantidade abastecida: ",
@@ -114,7 +114,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
+                    padding: const EdgeInsets.all(10),
                     child: Observer(builder: (_){
                       return CampoTextoValidate(
                           onChanged: calcularStore.setLitros,
@@ -125,7 +125,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                   ),
                 ],),
               ),
-              const Padding(padding: EdgeInsets.all(10)),
+              const SizedBox(height: 10),
               Visibility(
                 visible: _isVisible,
                 child:Container(
@@ -166,9 +166,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                       left: 32, top: 16, right: 32, bottom: 16);
                 }),
               ),
-              const SizedBox(
-                height: 10.0,
-              ),
+              const SizedBox(height: 10.0),
             ],
           ),
         ),

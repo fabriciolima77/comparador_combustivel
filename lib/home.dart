@@ -62,7 +62,7 @@ class _HomeState extends State<Home> {
                           ),
                           onPressed:() => Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => CompararCombustivel()))
+                              MaterialPageRoute(builder: (context) => const CompararCombustivel()))
                       ),
                     ),
                   ],
