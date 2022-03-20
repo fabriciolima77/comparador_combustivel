@@ -27,7 +27,3 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - [Dart](https://dart.dev/)
 - [Flutter](https://flutter.dev/)
-- [mobx](https://pub.dev/packages/mobx)
-- [flutter_mobx](https://pub.dev/packages/flutter_mobx)
-- [mobx_codegen](https://pub.dev/packages/mobx_codegen)
-- [build_runner](https://pub.dev/packages/build_runner)
