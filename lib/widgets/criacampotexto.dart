@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 class CampoTexto extends StatelessWidget {
   const CampoTexto({
       Key? key,
-      required this.onChanged,
+      required this.controller,
       required this.hintText,
   }): super(key: key);
 
-  final Function(String) onChanged;
+  final TextEditingController controller;
   final String hintText;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       keyboardType: TextInputType.number,
-      onChanged: onChanged,
+      controller: controller,
       maxLines: 1,
       decoration: InputDecoration(
         hintText: hintText,
