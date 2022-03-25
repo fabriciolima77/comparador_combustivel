@@ -6,12 +6,12 @@ de acordo com o rendimento do veículo do usuário.
 ## 🖼️ Imagens
 
  <div>
-    <img alt="print1" title="#Print 1" src="./images/print/splash.jpg" />
-    <img alt="print1" title="#Print 1" src="./images/print/menu.jpg" />
-    <img alt="print2" title="#Print 2" src="./images/print/comparar_comb.jpg" />
-    <img alt="print3" title="#Print 3" src="./images/print/comparar_comb_validate.jpg" />
-    <img alt="print3" title="#Print 3" src="./images/print/comparar_comb_result.jpg" />
-    <img alt="print3" title="#Print 3" src="./images/print/calcular_rend.jpg" />
+    <img alt="print1" title="#Print 1" src="./images/print/splash.jpg" width="270" height="529,5"/>
+    <img alt="print1" title="#Print 1" src="./images/print/menu.jpg" width="270" height="529,5"/>
+    <img alt="print2" title="#Print 2" src="./images/print/comparar_comb.jpg" width="270" height="529,5"/>
+    <img alt="print3" title="#Print 3" src="./images/print/comparar_comb_validate.jpg" width="270" height="529,5"/>
+    <img alt="print3" title="#Print 3" src="./images/print/comparar_comb_result.jpg" width="270" height="529,5"/>
+    <img alt="print3" title="#Print 3" src="./images/print/calcular_rend.jpg" width="270" height="529,5"/>
  </div>
 
 ### Features
