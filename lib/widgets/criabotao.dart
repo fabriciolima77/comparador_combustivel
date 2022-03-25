@@ -22,13 +22,13 @@ class CriaBotao extends StatelessWidget {
     return ElevatedButton(
       child: Text(hintText,
         style: const TextStyle(
-            fontSize: 20,
-            color: Colors.white),),
+            fontSize: 18,
+            color: Colors.black),),
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        primary: Colors.blueAccent[400],
+        primary: Colors.white,
         padding: EdgeInsets.fromLTRB(left, top, right, bottom),
-        textStyle: const TextStyle(fontWeight: FontWeight.bold),
+        textStyle: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5),
         ),

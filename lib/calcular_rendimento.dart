@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:comparador_combustivel/widgets/criabotao.dart';
 import 'package:comparador_combustivel/widgets/criacampotextovalidate.dart';
 import 'package:flutter/material.dart';
@@ -23,19 +22,17 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
   Widget build(BuildContext context) {
     double alturaTela = MediaQuery.of(context).size.height;
     double larguraTela = MediaQuery.of(context).size.width;
-    log('$kmInicialControl');
-    log('$kmFinalControl');
-    log("$litrosControl");
 
     return Scaffold(
       appBar: AppBar(
         title: const Text("Calcular rendimento",
             style: TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18)
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24)
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
           child: Form(
             key: _formKey,
@@ -43,33 +40,35 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   const Padding(
-                    padding: EdgeInsets.fromLTRB(35, 10, 10, 0),
+                    padding: EdgeInsets.fromLTRB(30, 10, 10, 0),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text("Dados do veículo: ",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
-                  Container(
-                    height: alturaTela < 600 ? alturaTela * 0.55: alturaTela * 0.6,
+                  SizedBox(
                     width: larguraTela * 0.9,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(18),
-                        color: Colors.blue[50]
-                    ),
                     child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
                       const Padding(
                         padding: EdgeInsets.all(10),
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text("Hodômetro inicial: ",
-                            style: TextStyle(fontWeight: FontWeight.bold,),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white
+                            ),
                           ),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(15),
                         child: CampoTextoValidate(
                               controller: kmInicialControl,
                               hintText: "(Km)",
@@ -87,12 +86,15 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text("Hodômetro final: ",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white
+                            ),
                           ),
                         ),
                       ),
                       Padding(
-                          padding: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(15),
                           child: CampoTextoValidate(
                               controller: kmFinalControl,
                               hintText: "(Km)",
@@ -110,12 +112,15 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text("Quantidade abastecida: ",
-                            style: TextStyle(fontWeight: FontWeight.bold,),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white
+                            ),
                           ),
                         ),
                       ),
                       Padding(
-                          padding: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(15),
                           child: CampoTextoValidate(
                               controller: litrosControl,
                               hintText: "Litros",
@@ -129,7 +134,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                       ),
                     ],),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 15),
                   Visibility(
                     visible: _isVisible,
                     child:Container(
@@ -151,7 +156,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
-                                  color: Colors.black,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
@@ -170,7 +175,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                               calculaMedia();
                             }
                           },
-                          left: 32, top: 16, right: 32, bottom: 16),
+                          left: 24, top: 12, right: 24, bottom: 12),
                   ),
                   const SizedBox(height: 10.0),
                 ],

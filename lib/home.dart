@@ -21,11 +21,12 @@ class _HomeState extends State<Home> {
         // ignore: prefer_const_constructors
         title: Text("Melhor Combustível",
             style: const TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20)
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24)
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -39,34 +40,21 @@ class _HomeState extends State<Home> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(18),
                 ),
-                child: Column(
-                  children: <Widget>[
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text("Comparar combustível",
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
-                        ),
-                      ),
-                    ),
-                    Padding(padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
+                child: Padding(padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
                       child: ElevatedButton(
                           child: Image.asset('images/comparar.png',
                             width: larguraTela * 0.54,
                             height: alturaTela * 0.24,
                           ),
                           style: ElevatedButton.styleFrom(
-                              primary: Colors.white,
-                              onPrimary: Colors.white
+                              primary: const Color(0xFF201E1E),
+                              onPrimary: const Color(0xFF201E1E),
                           ),
                           onPressed:() => Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => const CompararCombustivel()))
                       ),
                     ),
-                  ],
-                ),
               ),
               //segundo icone
               Container(
@@ -76,34 +64,21 @@ class _HomeState extends State<Home> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(18),
                 ),
-                child: Column(
-                  children: <Widget>[
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text("Calcular rendimento",
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
-                        ),
-                      ),
-                    ),
-                    Padding(padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
+                child: Padding(padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
                       child: ElevatedButton(
                           child: Image.asset('images/hodometro.png',
                             width: larguraTela * 0.54,
                             height: alturaTela * 0.24,
                           ),
                           style: ElevatedButton.styleFrom(
-                              primary: Colors.white,
-                              onPrimary: Colors.white
+                              primary: const Color(0xFF201E1E),
+                              onPrimary: const Color(0xFF201E1E),
                           ),
                           onPressed:() => Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => CalcularRendimento()))
                       ),
                     ),
-                  ],
-                ),
               ),
             ],
           ),

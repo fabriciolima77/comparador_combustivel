@@ -30,12 +30,13 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
       appBar: AppBar(
         title: const Text("Comparar combustível",
             style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 18)),
+                fontSize: 24)),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -46,16 +47,16 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "Dados do veículo: ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: Colors.white,
+                  ),
                 ),
               ),
             ),
             Container(
-              height: alturaTela < 600 ? alturaTela * 0.50 : alturaTela * 0.3,
               width: larguraTela * 0.9,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(18),
-                  color: Colors.blue[50]),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -67,6 +68,7 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
                         "Rendimento do veículo com Etanol: ",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -83,7 +85,10 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         "Rendimento do veículo com Gasolina: ",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
@@ -102,18 +107,18 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "Preço dos combustíveis: ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: Colors.white,
+                  ),
                 ),
               ),
             ),
             Form(
               key: _formKey,
-                child:  Container(
-                  height: alturaTela < 600 ? alturaTela * 0.5 : alturaTela * 0.4,
+                child: SizedBox(
                   width: larguraTela * 0.9,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      color: Colors.blue[50]),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -125,6 +130,7 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
                             "Preço Etanol: ",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
+                              color: Colors.white
                             ),
                           ),
                         ),
@@ -147,7 +153,10 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
                           alignment: Alignment.centerLeft,
                           child: Text(
                             "Preço Gasolina: ",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
@@ -167,7 +176,7 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
                   ),
                 ),
             ),
-            Padding(padding: EdgeInsets.all(alturaTela * 0.0136)),
+            const SizedBox(height: 10),
             Visibility(
               visible: _isVisible,
               child: Container(
@@ -209,9 +218,6 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
                       _calculaRendimento();
                     }
                   },
-
-                  /*rendGasolinaController.text.isEmpty && rendEtanolController.text.isEmpty && _formKey.currentState!.validate() ?
-                  _calculaSemRendimento : _calculaRendimento,*/
                   left: 32.0,
                   top: 16.0,
                   right: 32.0,

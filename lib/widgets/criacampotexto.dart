@@ -19,9 +19,9 @@ class CampoTexto extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         contentPadding: const EdgeInsets.all(10.0),
-        hintStyle: TextStyle(color: Colors.grey[600]),
+        hintStyle: const TextStyle(color: Colors.white),
         filled: true,
-        fillColor: Colors.white,
+        fillColor: const Color(0xFF121212),
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.white),
           borderRadius: BorderRadius.circular(8),
@@ -31,7 +31,7 @@ class CampoTexto extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
       ),
-      style: const TextStyle(color: Colors.black),
+      style: const TextStyle(color: Colors.white),
     );
   }
 }

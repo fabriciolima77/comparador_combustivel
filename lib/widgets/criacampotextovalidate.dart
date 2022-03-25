@@ -25,11 +25,11 @@ class CampoTextoValidate extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hintText,
           contentPadding: const EdgeInsets.all(10.0),
-          hintStyle: TextStyle(color: Colors.grey[600]),
+          hintStyle: const TextStyle(color: Colors.white),
           filled: true,
-          fillColor: Colors.white,
+          fillColor: const Color(0xFF121212),
           errorBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.white),
+            borderSide: const BorderSide(color: Colors.red),
             borderRadius: BorderRadius.circular(8),
           ),
           focusedErrorBorder: OutlineInputBorder(
@@ -45,7 +45,7 @@ class CampoTextoValidate extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
           ),
         ),
-        style: const TextStyle(color: Colors.black),
+        style: const TextStyle(color: Colors.white),
       );
   }
 }
