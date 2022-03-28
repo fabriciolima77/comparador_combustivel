@@ -210,7 +210,7 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
             Container(
               alignment: Alignment.center,
               child: CriaBotao(
-                  hintText: "CALCULAR",
+                  hintText: "Comparar",
                   onPressed: (){
                     if(rendGasolinaController.text.isEmpty && rendEtanolController.text.isEmpty && _formKey.currentState!.validate()){
                       _calculaSemRendimento();
@@ -244,7 +244,7 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
 
     setState(() {
       if (rendimento >= percentEtanol) {
-        texto = "Etanol é mais vantajoso!\n"
+        texto = "O seu melhor combustível é: Etanol !\n"
             "rendimento veículo: "
             "(${rendimento.toStringAsPrecision(3)})%\n"
             "rendimento sobre o preço: "
@@ -252,7 +252,7 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
         _isVisible = true;
         corResultado = Colors.greenAccent;
       } else {
-        texto = "Gasolina é mais vantajosa!\n"
+        texto = "O seu melhor combustível é: Gasolina !\n"
             "rendimento veículo: "
             "(${rendimento.toStringAsPrecision(3)})%\n"
             "rendimento sobre o preço: "
@@ -272,12 +272,12 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
 
     setState(() {
       if (percentEtanol < 70) {
-        texto = "Etanol é mais vantajoso!\n"
+        texto = "O seu melhor combustível é: Etanol !\n"
             "Utilize o rendimento do veículo para melhores resultados.";
         _isVisible = true;
         corResultado = Colors.greenAccent;
       } else if (percentEtanol >= 70) {
-        texto = "Gasolina é mais vantajosa!\n"
+        texto = "O seu melhor combustível é: Gasolina !\n"
             "Utilize o rendimento do veículo para melhores resultados.";
         _isVisible = true;
         corResultado = Colors.redAccent;

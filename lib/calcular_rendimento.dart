@@ -59,7 +59,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                         padding: EdgeInsets.all(10),
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: Text("Hodômetro inicial: ",
+                          child: Text("Km inicial: ",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.white
@@ -85,7 +85,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                         padding: EdgeInsets.all(10),
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: Text("Hodômetro final: ",
+                          child: Text("Km final: ",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white
@@ -169,13 +169,13 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                   Container(
                     alignment: Alignment.center,
                     child: CriaBotao(
-                          hintText: "CALCULAR",
+                          hintText: "Calcular",
                           onPressed: (){
                             if(_formKey.currentState!.validate()){
                               calculaMedia();
                             }
                           },
-                          left: 24, top: 12, right: 24, bottom: 12),
+                          left: 32, top: 16, right: 32, bottom: 16),
                   ),
                   const SizedBox(height: 10.0),
                 ],
@@ -206,8 +206,11 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
     } return null;
   }
    String? validadeKmFinal(){
-    String setKmInicial = kmInicialControl.text;
-    String setKmFinal = kmFinalControl.text;
+    String? setKmInicial = kmInicialControl.text;
+    String? setKmFinal = kmFinalControl.text;
+    if(setKmInicial.isEmpty ){
+      setKmInicial = "0";
+    }
     if(setKmFinal.isEmpty){
       return "Campo Obrigatório! ";
     }else if(double.parse(setKmFinal) < double.parse(setKmInicial)){
