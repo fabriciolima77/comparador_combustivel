@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/comparador_combustivel.iml" filepath="$PROJECT_DIR$/comparador_combustivel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/comparador_combustivel_android.iml" filepath="$PROJECT_DIR$/android/comparador_combustivel_android.iml" />
     </modules>
   </component>
 </project>

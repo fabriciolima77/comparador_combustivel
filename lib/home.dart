@@ -47,8 +47,9 @@ class _HomeState extends State<Home> {
                             height: alturaTela * 0.24,
                           ),
                           style: ElevatedButton.styleFrom(
-                              primary: const Color(0xFF201E1E),
-                              onPrimary: const Color(0xFF201E1E),
+                              elevation: 4,
+                              primary: Colors.black /*const Color(0xFF201E1E)*/,
+                              onPrimary: Colors.black /*const Color(0xFF201E1E)*/,
                           ),
                           onPressed:() => Navigator.push(
                               context,
@@ -71,8 +72,9 @@ class _HomeState extends State<Home> {
                             height: alturaTela * 0.24,
                           ),
                           style: ElevatedButton.styleFrom(
-                              primary: const Color(0xFF201E1E),
-                              onPrimary: const Color(0xFF201E1E),
+                              elevation: 4,
+                              primary: Colors.black /*const Color(0xFF201E1E)*/,
+                              onPrimary: Colors.black /*const Color(0xFF201E1E)*/,
                           ),
                           onPressed:() => Navigator.push(
                               context,
