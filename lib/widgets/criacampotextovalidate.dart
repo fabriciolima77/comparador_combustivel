@@ -37,11 +37,11 @@ class CampoTextoValidate extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.white),
+            borderSide: const BorderSide(color: Colors.grey),
             borderRadius: BorderRadius.circular(8),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.yellow[300]!),
+            borderSide: const BorderSide(color: Colors.white),
             borderRadius: BorderRadius.circular(8),
           ),
         ),

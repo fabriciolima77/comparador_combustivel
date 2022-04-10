@@ -26,11 +26,11 @@ class CriaBotao extends StatelessWidget {
             color: Colors.black),),
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        primary: Colors.yellow,
+        primary: Colors.white,
         padding: EdgeInsets.fromLTRB(left, top, right, bottom),
         textStyle: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(22),
         ),
       ),
     );

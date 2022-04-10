@@ -218,10 +218,10 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
                       _calculaRendimento();
                     }
                   },
-                  left: 32.0,
-                  top: 16.0,
-                  right: 32.0,
-                  bottom: 16.0),
+                  left: 36.0,
+                  top: 12.0,
+                  right: 36.0,
+                  bottom: 12.0),
             ),
             Padding(padding: EdgeInsets.all(alturaTela * 0.0136)),
           ],

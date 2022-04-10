@@ -175,7 +175,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
                               calculaMedia();
                             }
                           },
-                          left: 32, top: 16, right: 32, bottom: 16),
+                          left: 36, top: 10, right: 36, bottom: 10),
                   ),
                   const SizedBox(height: 10.0),
                 ],
