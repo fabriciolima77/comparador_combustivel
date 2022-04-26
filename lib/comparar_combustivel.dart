@@ -1,6 +1,7 @@
 import 'package:comparador_combustivel/widgets/criabotao.dart';
 import 'package:comparador_combustivel/widgets/criacampotexto.dart';
 import 'package:comparador_combustivel/widgets/criacampotextovalidate.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CompararCombustivel extends StatefulWidget {
@@ -19,6 +20,7 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
 
   var texto = "";
   bool _isVisible = false;
+  bool _isRendVisible = false;
   var corResultado = Colors.white;
 
   @override
@@ -40,190 +42,215 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.fromLTRB(35, 10, 10, 0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Dados do veículo: ",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              width: larguraTela * 0.9,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Rendimento do veículo com Etanol: ",
-                        style: TextStyle(
+          children: [
+            Column(
+              children: <Widget>[
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(35, 10, 10, 0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Preço dos combustíveis: ",
+                      style: TextStyle(
                           fontWeight: FontWeight.bold,
+                          fontSize: 18,
                           color: Colors.white,
-                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                      child: CampoTexto(
-                        controller: rendEtanolController,
-                        hintText: "(Km/L)",
-                      )),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Rendimento do veículo com Gasolina: ",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                      child: CampoTexto(
-                        controller: rendGasolinaController,
-                        hintText: "(Km/L)",
-                      )),
-                ],
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(35, 10, 10, 0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Preço dos combustíveis: ",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: Colors.white,
                   ),
                 ),
-              ),
-            ),
-            Form(
-              key: _formKey,
-                child: SizedBox(
-                  width: larguraTela * 0.9,
+                Form(
+                  key: _formKey,
+                    child: SizedBox(
+                      width: larguraTela * 0.9,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "Preço Etanol: ",
+                                style: TextStyle(
+                                  color: Colors.white
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                              padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                              child: CampoTextoValidate(
+                                controller: precoEtanolController,
+                                hintText: "R\$",
+                                validator: validadePrecoEtanol(),
+                                onChanged: (value) {
+                                  setState(() {
+                                    precoEtanolController;
+                                  });
+                                },
+                              )),
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "Preço Gasolina: ",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                              padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                              child: CampoTextoValidate(
+                                controller: precoGasolinaController,
+                                hintText: "R\$",
+                                validator: validatePrecoGasolina(),
+                                onChanged: (value) {
+                                  setState(() {
+                                    precoGasolinaController;
+                                  });
+                                },
+                              )),
+                        ],
+                      ),
+                    ),
+                ),
+                Padding(padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
+                child: SwitchListTile(
+                  value: _isRendVisible,
+                  inactiveTrackColor: Colors.grey,
+                  activeColor: Colors.green,
+                  onChanged: (value){
+                    setState(() {
+                      _isRendVisible = !_isRendVisible;
+                    });
+                    },
+                  secondary: const Text("Usar rendimento do meu veículo",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                    ),
+                   ),
+                  ),
+                ),
+                Visibility(
+                  visible: _isRendVisible,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
+                    children: [
                       const Padding(
-                        padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
+                        padding: EdgeInsets.fromLTRB(35, 10, 10, 0),
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            "Preço Etanol: ",
+                            "Dados do veículo: ",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: Colors.white
+                              fontSize: 18,
+                              color: Colors.white,
                             ),
                           ),
                         ),
                       ),
-                      Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                          child: CampoTextoValidate(
-                            controller: precoEtanolController,
-                            hintText: "R\$",
-                            validator: validadePrecoEtanol(),
-                            onChanged: (value) {
-                              setState(() {
-                                precoEtanolController;
-                              });
-                            },
-                          )),
-                      const Padding(
-                        padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            "Preço Gasolina: ",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                      SizedBox(
+                        width: larguraTela * 0.9,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Padding(
+                              padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "Rendimento do veículo com Etanol: ",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
+                            Padding(
+                                padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                                child: CampoTexto(
+                                  controller: rendEtanolController,
+                                  hintText: "(Km/L)",
+                                )),
+                            const Padding(
+                              padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "Rendimento do veículo com Gasolina: ",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                                padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                                child: CampoTexto(
+                                  controller: rendGasolinaController,
+                                  hintText: "(Km/L)",
+                                )),
+                          ],
                         ),
                       ),
-                      Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                          child: CampoTextoValidate(
-                            controller: precoGasolinaController,
-                            hintText: "R\$",
-                            validator: validatePrecoGasolina(),
-                            onChanged: (value) {
-                              setState(() {
-                                precoGasolinaController;
-                              });
-                            },
-                          )),
                     ],
                   ),
                 ),
-            ),
-            const SizedBox(height: 10),
-            Visibility(
-              visible: _isVisible,
-              child: Container(
-                height:
-                    alturaTela < 600 ? alturaTela * 0.30 : alturaTela * 0.15,
-                width:
-                    larguraTela > 600 ? larguraTela * 0.4 : larguraTela * 0.9,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
-                    color: corResultado),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(5, 10, 5, 0),
-                      child: Text(
-                        texto,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: Colors.black,
+                const SizedBox(height: 10),
+                Visibility(
+                  visible: _isVisible,
+                  child: Container(
+                    height:
+                        alturaTela < 600 ? alturaTela * 0.30 : alturaTela * 0.15,
+                    width:
+                        larguraTela > 600 ? larguraTela * 0.4 : larguraTela * 0.9,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(18),
+                        color: corResultado),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(5, 10, 5, 0),
+                          child: Text(
+                            texto,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.black,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
+                Padding(padding: EdgeInsets.all(alturaTela * 0.0136)),
+                Container(
+                  alignment: Alignment.center,
+                  child: CriaBotao(
+                      hintText: "Comparar",
+                      onPressed: (){
+                        if(rendGasolinaController.text.isEmpty && rendEtanolController.text.isEmpty && _formKey.currentState!.validate()){
+                          _calculaSemRendimento();
+                        }else{
+                          _calculaRendimento();
+                        }
+                      },
+                      left: 36.0,
+                      top: 12.0,
+                      right: 36.0,
+                      bottom: 12.0),
+                ),
+                Padding(padding: EdgeInsets.all(alturaTela * 0.0136)),
+              ],
             ),
-            Padding(padding: EdgeInsets.all(alturaTela * 0.0136)),
-            Container(
-              alignment: Alignment.center,
-              child: CriaBotao(
-                  hintText: "Comparar",
-                  onPressed: (){
-                    if(rendGasolinaController.text.isEmpty && rendEtanolController.text.isEmpty && _formKey.currentState!.validate()){
-                      _calculaSemRendimento();
-                    }else{
-                      _calculaRendimento();
-                    }
-                  },
-                  left: 36.0,
-                  top: 12.0,
-                  right: 36.0,
-                  bottom: 12.0),
-            ),
-            Padding(padding: EdgeInsets.all(alturaTela * 0.0136)),
           ],
         ),
       ),
