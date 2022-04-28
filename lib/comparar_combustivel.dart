@@ -298,12 +298,12 @@ class _CompararCombustivelState extends State<CompararCombustivel> {
     final percentEtanol = (valorEtanol / valorGasolina) * 100;
 
     setState(() {
-      if (percentEtanol < 70) {
+      if (percentEtanol < 73) {
         texto = "O seu melhor combustível é: Etanol !\n"
             "Utilize o rendimento do veículo para melhores resultados.";
         _isVisible = true;
         corResultado = Colors.greenAccent;
-      } else if (percentEtanol >= 70) {
+      } else if (percentEtanol >= 74) {
         texto = "O seu melhor combustível é: Gasolina !\n"
             "Utilize o rendimento do veículo para melhores resultados.";
         _isVisible = true;

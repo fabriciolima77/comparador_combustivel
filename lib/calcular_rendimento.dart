@@ -214,7 +214,7 @@ class _CalcularRendimentoState extends State<CalcularRendimento> {
     if(setKmFinal.isEmpty){
       return "Campo Obrigatório! ";
     }else if(double.parse(setKmFinal) < double.parse(setKmInicial)){
-      return "Hodômetro Final não pode ser menor que Hodômetro Inicial! ";
+      return "Km Final não pode ser menor que Km Inicial! ";
     }return null;
   }
    String? validateLitros(){
